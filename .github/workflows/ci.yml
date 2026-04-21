@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   check:
-    name: typecheck + test + build
+    name: typecheck + lint + test + build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,6 +27,9 @@ jobs:
 
       - name: Type-check
         run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint
 
       - name: Test (if present)
         run: npm test --if-present
